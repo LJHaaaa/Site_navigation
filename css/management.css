@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+
+
+/* 功能菜单 */
+.menu {
+    width: 100%;
+    height: 45px;
+    margin: 20px 0;
+    line-height: 45px;
+}
+
+.menu .screen {
+    width: 600px;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+
+#screen .layui-form-label {
+    padding: 12px 15px !important;
+    line-height: normal !important;
+}
+
+/* 添加网站弹出层样式 */
+/* 网站信息 */
+#message {
+    position: absolute;
+    left: 0;
+    width: 450px;
+    /*  background-color: pink; */
+    text-align: center;
+}
+
+#message form {
+    margin: 50px auto 35px;
+    width: 96%;
+}
+
+#message .layui-form-label {
+    padding: 10px 0 !important;
+    font-size: 15px;
+}
+
+
+/* 图片展示 */
+#image-upload {
+    position: absolute;
+    right: 0;
+    width: 350px;
+    /* background-color: orange; */
+    text-align: center;
+}
+
+#image-upload h4 {
+    text-indent: 40px;
+    text-align: left;
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+#image-upload .showImage {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000;
+    box-shadow: 0px 0px 15px #aaa;
+    margin: 0 auto 20px;
+    /* background: url('/8463593.jpg') no-repeat center; */
+
+}
+
+
+/* 修改网站信息弹出层 */
+.editForm {
+    margin: 30px auto;
+    width: 80%;
+    text-align: center;
+}
+
+.editForm .layui-form-label {
+    padding: 9px 0 !important;
+    text-align: left !important;
+}
+
+/* 分页 */
+#web_paging {
+    text-align: center;
+}

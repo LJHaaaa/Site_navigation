@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站首页^_^</title>
+    <link rel="shortcut icon" href="/images/bitbug_favicon.icon" type="image/x-icon">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/library/jQuery 3.6.0.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="w">
+            <div class="logo"><a href=""><img src="/images/123.png" alt=""></a></div>
+            <div class="time">
+            </div>
+        </div>
+    </nav>
+
+    <ul class="leftNav">
+    </ul>
+
+    <div class="rightNav">
+        <div class="triangle"></div>
+    </div>
+    <div class="part">
+
+    </div>
+    <footer>
+        <p>作品仅供参考</p>
+    </footer>
+
+    <!-- 标签模板 -->
+    <script type="text/html" id="labelTemplate">
+        {{each label labeldata}}
+        <div class="label">
+            <h2 id="leftNav{{labeldata.id}}"><span>|</span>{{labeldata.label}}</h2>
+            <hr>
+            <div class="matter">
+                {{each web webdata}}
+                {{if webdata.label == labeldata.label}}
+                <div class="card">
+                    <a href="//{{webdata.webUrl}}" target=" _blank">
+                        <div class="cardImage"><img src={{webdata.imageurl}}></div>
+                        <div class="cardDescribe">
+                            <h3>{{webdata.websiteName}}</h3>
+                            <p>{{webdata.webSynopsis}}</p>
+                        </div>
+                    </a>
+                </div>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+        {{/each}}
+    </script>
+
+    <script src="./library/template-web.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入jQuery.js 
+        -->
+    <script src="/library/jQuery 3.6.0.js"></script>
+    <!-- 引入 layui.css -->
+    <link rel="stylesheet" href="/library/layui-master/dist/css/layui.css">
+    <!-- 引入这个页面的css样式 -->
+    <link rel="stylesheet" href="/css/management.css">
+    <!-- 引入 layui.js -->
+    <script src="/library/layui-master/dist/layui.js"></script>
+
+</head>
+
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="menu">
+        <form class="layui-form screen" id="screen" lay-filter="screen">
+            <div class="layui-inline">
+                <label class="layui-form-label">标签</label>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <select name="label">
+
+                    </select>
+                </div>
+            </div>
+            <div class="layui-input-inline">
+                <button class="layui-btn reset">重置</button>
+            </div>
+        </form>
+        <button type="button" id="addweb" class="layui-btn">添加网站</button>
+    </div>
+
+    <!-- 网站信息表格 -->
+    <table class="layui-table">
+        <colgroup>
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>索引</th>
+                <th>网站名称</th>
+                <th>标签</th>
+                <th>网站简介</th>
+                <th>网站地址</th>
+                <th>网站图标</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="webdata-table">
+        </tbody>
+    </table>
+
+    <div id="web_paging"></div>
+    <!-- 添加网站的弹出层模板 -->
+    <script type="text/html" id="addWeb-template1" name="addWeb-template1">
+        <div id="message">
+            <form class="layui-form" id="addmessage" method="post">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标签</label>
+                    <div class="layui-input-block">
+                        <select name="label" lay-verify="required" class="select">
+                            <option value="">请选择</option>
+                            {{each label}}
+                            <option value={{label[$index]}}>{{label[$index]}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">网站名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="webName" placeholder="请输入网站名称" class="layui-input"
+                            lay-verify="required">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">网站简介</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="webSynopsis" placeholder="请输入网站简介" lay-verify="required"
+                            class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">网站网址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="webUrl" placeholder="请输入网站网址" class="layui-input" id="webUrl"
+                            lay-verify="required|weburl">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo" id="upload">立即提交</button>
+                        <button type="button" class="layui-btn layui-btn-primary" id="upload-cancel">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="image-upload">
+            <input type="file" name="image" style="display: none;" id="file-Image" lay-verify="required">
+            <h4>图片效果</h4>
+            <div class="showImage"></div>
+            <button type="button" class="layui-btn" id="imageUpload">上传图片</button>
+        </div>
+    </script>
+
+    <!-- 修改网站的弹出处模板 -->
+    <script type="text/html" id="ed" name="ed">
+        <form class="layui-form editForm" id="editmsg">
+            <input type="text" style="display:none" name="id" value={{editmsg.id}}>
+            <div class="layui-form-item">
+                <label class="layui-form-label">网站名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="webName" placeholder="请输入网站名称" class="layui-input"
+                        value={{editmsg.websiteName}}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">标签</label>
+                <div class="layui-input-block">
+                    <select name="label" lay-verify="required" class="select">
+                        <option value="">请选择</option>
+                        {{each editlaber}}
+                        {{if editlaber[$index] == editmsg.label}}
+                        <option value={{editlaber[$index]}} selected="selected">{{editlaber[$index]}}</option>
+                        {{else if editlaber[$index] != editmsg.label}}
+                        <option value={{editlaber[$index]}}>{{editlaber[$index]}}</option>
+                        {{/if}}
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">网站简介</label>
+                <div class="layui-input-block">
+                    <input type="text" name="webSynopsis" placeholder="请输入网站简介" class="layui-input"
+                        value={{editmsg.webSynopsis}}>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">网站网址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="webUrl" placeholder="请输入网站网址" class="layui-input" id="webUrl"
+                        value={{editmsg.webUrl}}>
+                </div>
+            </div>
+            <input type="submit" class="layui-btn upload" value="提交">
+            <button type="button" class="layui-btn upload-cancel">取消</button>
+        </form>
+    </script>
+
+    <!-- 引入模板引擎，用来渲染模板 -->
+    <script src="/library/template-web.js"></script>
+    <!-- 引入managemnet.js -->
+    <script src="/js/management.js"></script>
+</body>
+
+</html>

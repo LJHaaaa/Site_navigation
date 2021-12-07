@@ -1,0 +1,19 @@
+.addlabel {
+    width: 60%;
+    margin: 20px auto !important;
+}
+
+#editForm {
+    width: 80%;
+    text-align: center;
+}
+
+table {
+    width: 60% !important;
+    margin: 0 auto !important;
+}
+
+.layui-form-label {
+    text-align: center !important;
+    padding: 9px 0px !important;
+}

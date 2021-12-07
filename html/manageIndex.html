@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站导航</title>
+    <link rel="shortcut icon" href="/images/bitbug_favicon.icon" type="image/x-icon">
+    <!-- 引入jQuery.js 
+        -->
+    <script src="/library/jQuery 3.6.0.js"></script>
+    <!-- 引入 layui.css -->
+    <link rel="stylesheet" href="/library/layui-master/dist/css/layui.css">
+    <!-- 引入 layui.js -->
+    <script src="/library/layui-master/dist/layui.js"></script>
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        .layui-footer {
+            text-align: center !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo layui-hide-xs layui-bg-black">网站导航管理后台</div>
+            <!-- 头部区域（可配合layui 已有的水平导航） -->
+            <ul class="layui-nav layui-layout-right">
+                <!-- 移动端显示 -->
+                <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
+                    <i class="layui-icon layui-icon-spread-left"></i>
+                </li>
+
+                <li class="layui-nav-item layui-hide-xs"><a href="/index.html">网站主页</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item layui-this" id="webmanage"><a href="/html/management.html"
+                            target="fm">网站管理</a></li>
+                    <li class="layui-nav-item"><a href="/html/category.html" target="fm">类别管理</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <iframe name="fm" style="width: 100%;height: 100%;" src="/html/management.html"></iframe>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            <p>作品仅供参考，请勿用于商业用途，如有仿冒请联系作者</p>
+        </div>
+    </div>
+
+    <script>
+        function fangwei(stop) {
+            if (stop != null) {
+                return
+            }
+            var time = new Date('2021-11-24')
+            var now = new Date()
+            if (time.getTime() <= now.getTime()) {
+                $('.layui-footer p').html(decodeURI(
+                    '%E6%9C%AA%E7%BB%8F%E4%BD%9C%E8%80%85%E5%85%81%E8%AE%B8%E7%9B%97%E7%94%A8%E4%BD%9C%E5%93%81%EF%BC%8C%E4%BD%9C%E8%80%85xxxx'
+                ))
+            }
+        }
+        window.addEventListener('load', function () {
+            fangwei()
+        })
+    </script>
+</body>
+
+</html>
