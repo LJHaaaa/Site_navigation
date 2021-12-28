@@ -11,7 +11,7 @@ var q = {
 }
 
 /* 请求服务器的网址 */
-const path = 'http://10.101.218.135:5555'
+/* const path = 'http://localhost:5555' */
 
 /*定义判断网址是否存在协议，如果有将协议替换成空 */
 function judgeAddress(address) {

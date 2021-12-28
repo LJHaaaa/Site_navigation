@@ -1,5 +1,5 @@
 /* 定义请求的根地址 */
-const path = 'http://10.101.218.135:5555'
+/* const path = 'http://localhost:5555' */
 /* 定义日期的函数 */
 function gettime() {
     function zeroize(data) {
@@ -33,7 +33,6 @@ function getlabel() {
 
 function getweb() {
     $.get(path + '/getwebdata', function (cbdata) {
-        console.log(cbdata);
         var cardData = template('labelTemplate', { web: cbdata, label: labelData })
         $('.part').html(cardData)
     })

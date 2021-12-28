@@ -1,5 +1,5 @@
 var layer = layui.layer
-const path = 'http://10.101.218.135:5555'
+/* const path = 'http://localhost:5555' */
 
 /* 请求标签数据，并渲染到指定的表格中 */
 function getData() {

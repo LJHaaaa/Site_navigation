@@ -2,3 +2,4 @@
 uploads/
 #忽略node_modules目录下所有的文件
 node_modules/
+try.html
