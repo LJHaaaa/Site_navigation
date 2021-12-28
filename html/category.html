@@ -13,17 +13,18 @@
     <link rel="stylesheet" href="/library/layui-master/dist/css/layui.css">
     <!-- 引入 layui.js -->
     <script src="/library/layui-master/dist/layui.js"></script>
+    <!-- 引入 category.css-->
     <link rel="stylesheet" href="/css/category.css">
 </head>
 
 <body>
+    <!-- 添加标签表单 -->
     <form class="layui-form addlabel">
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">标签</label>
                 <div class="layui-input-block">
-                    <input type="text" name="label" required lay-verify="required" placeholder="请输入标签"
-                        autocomplete="off" class="layui-input">
+                    <input type="text" name="label" lay-verify="required" placeholder="请输入标签" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
@@ -33,6 +34,7 @@
         </div>
     </form>
 
+    <!-- 表格 -->
     <table class="layui-table">
         <colgroup>
             <col>
@@ -50,8 +52,9 @@
 
         </tbody>
     </table>
-
+    <!-- 引入请求的url地址 -->
     <script src="/router/path.js"></script>
+    <!-- 引入category.js -->
     <script src="/js/category.js"></script>
 </body>
 

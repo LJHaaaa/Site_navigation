@@ -1,5 +1,3 @@
-/* 定义请求的根地址 */
-/* const path = 'http://localhost:5555' */
 /* 定义日期的函数 */
 function gettime() {
     function zeroize(data) {
@@ -48,6 +46,7 @@ window.addEventListener('load', function () {
         $('.time').html("<p>" + gettime() + "</p>")
     }, 1000)
 
+    /* 右侧返回顶部的显示与隐藏，和返回顶部的功能 */
     var gundong = null
     $('.rightNav').on('click', function () {
         gundong = setInterval(function () {
@@ -68,6 +67,7 @@ window.addEventListener('load', function () {
         }
     })
 
+    /* 左侧导航栏,排他思想 */
     $('body').on('click', '.leftNav a', function () {
         $(this).css("color", "orange").parent().siblings().children().css("color", "#000")
     })

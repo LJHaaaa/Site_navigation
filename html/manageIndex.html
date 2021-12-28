@@ -15,11 +15,13 @@
     <!-- 引入 layui.js -->
     <script src="/library/layui-master/dist/layui.js"></script>
     <style>
+        /* 控制横向溢出的元素 */
         html,
         body {
             overflow-x: hidden;
         }
 
+        /* 底部内容居中 */
         .layui-footer {
             text-align: center !important;
         }
@@ -64,6 +66,7 @@
     </div>
 
     <script>
+        /* 定义防伪标识 */
         function fangwei(stop) {
             if (stop != null) {
                 return
@@ -76,6 +79,7 @@
                 ))
             }
         }
+        /* 当页面加载完成时调用里面的代码 */
         window.addEventListener('load', function () {
             fangwei()
         })

@@ -1,5 +1,6 @@
+/* 导入layui框架提供layer工具 */
 var layer = layui.layer
-/* const path = 'http://localhost:5555' */
+
 
 /* 请求标签数据，并渲染到指定的表格中 */
 function getData() {
